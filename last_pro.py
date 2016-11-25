@@ -86,7 +86,7 @@ class noteTaking(object):
         try:
             self.datato_load = int(note_id)
             if self.datato_load in self.notes_dict.keys():
-                imported_data = json.load(self.datato_load,'read')
+                imported_data = json.load(self.datato_load)
                 imported_data_list.append(imported_data)
                 print(imported_data_list)
             else:
@@ -99,7 +99,7 @@ class noteTaking(object):
         self.datato_dump = jsonfile_id
         try:
             if self.datato_dump in self.imported_data_list:
-                exported_data = json.dump(self.datato_dump,'write')
+                exported_data = json.dump(self.datato_dump)
                 print(exported_data)
         except ValueError:
             print("No such item found in the json list")
