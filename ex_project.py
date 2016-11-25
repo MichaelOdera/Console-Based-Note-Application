@@ -1,5 +1,5 @@
 """
-This example uses docopt with the built in cmd module to demonstrate an
+This uses docopt with the built in cmd module to demonstrate an
 interactive command application.
 Usage:
     my_program note_create <note_content>... 
@@ -59,18 +59,21 @@ class MyInteractive (cmd.Cmd):
     prompt = '(my_program) '
     file = None
 
+    # This cmd links to the createNote() method
     @docopt_cmd
     def do_note_create(self, arg):
         """Usage: note_create <note_content>..."""
 
         noted.createNote(' '.join(arg['<note_content>']))
-
+    
+    # This cmd links to the viewNote() method
     @docopt_cmd
     def do_note_view(self, arg):
         """Usage: note_view <note_id>"""
 
         noted.viewNote(arg['<note_id>'])
 
+    # This cmd links to the deleteNote() method
     @docopt_cmd
     def do_note_delete(self, arg):
         """Usage: note_delete <note_id>"""
@@ -79,42 +82,42 @@ class MyInteractive (cmd.Cmd):
         noted.deleteNote(arg['<note_id>'])
     
            
-
+    # This cmd links to the search_word() method
     @docopt_cmd
     def do_note_search(self, arg):
         """Usage: note_search <query_string>..."""
 
         noted.search_word(' '.join(arg['<query_string>']))
 
-
+    # This cmd links to the nextNote() method
     @docopt_cmd
     def do_next_note(self, arg):
         """Usage: next_note <next_word>"""
 
         noted.nextNote(arg['<next_word>'])
 
-
+    # This cmd links to the import_json() method
     @docopt_cmd
     def do_import_json(self, arg):
         """Usage: import_json <note_id>"""
 
         noted.import_json(arg['<note_id>'])
 
-
+    # This cmd links to the export_json() method
     @docopt_cmd
     def do_export_json(self, arg):
         """Usage: export_json <jsonfile_id>"""
 
         noted.export_json(arg['jsonfile_id>'])
 
-
+    # This cmd links to the notelist() method
     @docopt_cmd
     def do_notes_list(self, arg):
         """Usage: notes_list <limit_par>"""
 
         noted.notelist(arg['<limit_par>'])
 
-
+    # This cmd allows the user to quit from the app
     def do_quit(self, arg):
         """Quits out of Interactive Mode."""
 
